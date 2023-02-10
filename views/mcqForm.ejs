@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: fit-content;
+        font-family: "Times New Roman", Times, serif;
+      }
+      form {
+        padding-top: 50px;
+        width: 100%;
+      }
+      .roll {
+        display: block;
+        margin: auto;
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .rollin {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .rollin label {
+        margin-right: 5px;
+      }
+      .rollin input {
+        width: 265px;
+        height: 30px;
+        border-radius: 0;
+        outline: none;
+        border: 1px solid black;
+        font-size: 16px;
+        letter-spacing: 16px;
+        padding: 0 8px;
+        box-sizing: border-box;
+      }
+      .headImg {
+        width: 70%;
+        margin: auto;
+        display: block;
+        margin-top: 10px;
+        position: relative;
+      }
+      .headImg #header-img {
+        width: 70%;
+        margin: auto;
+        display: block;
+      }
+      .headImg #iare-logo {
+        display: inline-block;
+        width: 8.5%;
+        margin-left: 1%;
+        position: absolute;
+        left: 0;
+        top: 12px;
+      }
+      .other {
+        margin: auto;
+        display: block;
+        text-align: center;
+      }
+      .other2 {
+        margin: auto;
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 70%;
+      }
+      .instructions {
+        width: 70%;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 0.6mm solid black;
+        border-left: none;
+        border-right: none;
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 5px;
+      }
+      .instructions span {
+        margin-top: 5px;
+      }
+      .section-title {
+        width: 70%;
+        margin: 25px auto;
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .section {
+        width: 70%;
+        display: block;
+        margin: auto;
+      }
+      .question {
+        width: 100%;
+        margin: 10px 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .desc {
+        text-align: justify;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .options {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+      }
+      .options input {
+        width: 20px;
+        height: 20px;
+        margin: 0 7px;
+      }
+      .options span {
+        width: 20px;
+        height: 20px;
+        margin: 0 7px;
+      }
+      .sections {
+        display: flex;
+        align-items: center;
+        width: 70%;
+        margin: auto;
+      }
+      button {
+        width: 70%;
+        display: block;
+        margin: auto;
+        padding: 10px 0;
+        text-align: center;
+        background: rgb(61, 61, 61);
+        border-radius: 1mm;
+        color: white;
+        font-size: x-large;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/" method="post">
+      <span class="roll">
+        <span class="rollin">
+          <label for="roll">Hall Ticket No</label>
+          <input
+            type="text"
+            name="Roll Number"
+            id="roll"
+            maxlength="10"
+            minlength="10"
+            required
+          />
+        </span>
+        <span class="rollin">
+          <span>Question Paper Code: </span>
+          <span>MCQ-IARE </span>
+        </span>
+      </span>
+      <div class="headImg">
+        <img src="./images/Iare Original logo.jpg" alt="" id="iare-logo" />
+        <img src="./images/iare_page_header.png" alt="" id="header-img" />
+      </div>
+      <div class="other" id="other1">
+        B.Tech Multiple Choice Examinations (Regular) -
+      </div>
+      <script>
+        const monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        document.getElementById("other1").innerText +=
+          " " +
+          monthNames[new Date().getMonth()] +
+          ", " +
+          new Date().getFullYear();
+      </script>
+      <div class="other2" style="justify-content: center">MCQ EXAMINATION</div>
+      <div class="other2">
+        <span>Time: 3 Hours</span>
+        <span>(COMMON TO ALL BRANCHES)</span>
+        <span>Max Marks: 90 </span>
+      </div>
+      <div class="instructions">
+        <span>Answer all questions and all sections</span>
+        <span>All questions Carry Equal Marks</span>
+        <span>Make sure to submit the test, answers won't be auto saved</span>
+      </div>
+      <div class="section-title">Answer Sheet</div>
+      <span class="sections">
+        <span class="section">
+          <span class="options">
+            <span style="width: 20px"></span>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+            <span>D</span>
+          </span>
+          <% for(var i=1;i<=30;i++){ %>
+          <span class="question">
+            <span style="width: 30px"><%= i %></span>
+            <span class="options">
+              <input type="radio" name="q<%=i %>" value="A" />
+              <input type="radio" name="q<%=i %>" value="B" />
+              <input type="radio" name="q<%=i %>" value="C" />
+              <input type="radio" name="q<%=i %>" value="C" />
+            </span>
+          </span>
+          <%}%>
+        </span>
+        <span class="section">
+          <span class="options">
+            <span style="width: 20px"></span>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+            <span>D</span>
+          </span>
+          <% for(var i=31;i<=60;i++){ %>
+          <span class="question">
+            <span style="width: 30px"><%= i %></span>
+            <span class="options">
+              <input type="radio" name="q<%=i %>" value="A" />
+              <input type="radio" name="q<%=i %>" value="B" />
+              <input type="radio" name="q<%=i %>" value="C" />
+              <input type="radio" name="q<%=i %>" value="D" />
+            </span>
+          </span>
+          <%}%>
+        </span>
+        <span class="section">
+          <span class="options">
+            <span style="width: 20px"></span>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+            <span>D</span>
+          </span>
+          <% for(var i=61;i<=90;i++){ %>
+          <span class="question">
+            <span style="width: 30px"><%= i %></span>
+            <span class="options">
+              <input type="radio" name="q<%=i %>" value="A" />
+              <input type="radio" name="q<%=i %>" value="B" />
+              <input type="radio" name="q<%=i %>" value="C" />
+              <input type="radio" name="q<%=i %>" value="D" />
+            </span>
+          </span>
+          <%}%>
+        </span>
+        <span class="section">
+          <span class="options">
+            <span style="width: 20px"></span>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+            <span>D</span>
+          </span>
+          <% for(var i=91;i<=120;i++){ %>
+          <span class="question">
+            <span style="width: 30px"><%= i %></span>
+            <span class="options">
+              <input type="radio" name="q<%=i %>" value="A" />
+              <input type="radio" name="q<%=i %>" value="B" />
+              <input type="radio" name="q<%=i %>" value="C" />
+              <input type="radio" name="q<%=i %>" value="D" />
+            </span>
+          </span>
+          <%}%>
+        </span>
+        <span class="section">
+          <span class="options">
+            <span style="width: 20px"></span>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+            <span>D</span>
+          </span>
+          <% for(var i=121;i<=150;i++){ %>
+          <span class="question">
+            <span style="width: 30px"><%= i %></span>
+            <span class="options">
+              <input type="radio" name="q<%=i %>" value="A" />
+              <input type="radio" name="q<%=i %>" value="B" />
+              <input type="radio" name="q<%=i %>" value="C" />
+              <input type="radio" name="q<%=i %>" value="D" />
+            </span>
+          </span>
+          <%}%>
+        </span>
+      </span>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
