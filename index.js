@@ -22,17 +22,22 @@ app.get("/", async (req, res) => {
   res.render("mcqForm");
 });
 app.post("/", (req, res) => {
-  console.log(req.body);
+  //check if user already has written
+  const checkFile = xlsx.readFile("./result.xlsx");
+  let checkSheet = checkFile.Sheets["Sheet1"];
+  let checkData = xlsx.utils.sheet_to_json(checkSheet);
+  for(var i=0;i<checkData.length;i++){
+    if(checkData[i].RollNumber && checkData[i].RollNumber.toUpperCase() === req.body.RollNumber.toUpperCase())
+    {
+      return res.send("You have already attempted this Contest");
+    }
+  }
   const file = xlsx.readFile("./key.xlsx");
   let sheet = file.Sheets["Sheet1"];
   let data = xlsx.utils.sheet_to_json(sheet);
   let score = 0;
-  console.log(data, 2324324);
   for (var i = 0; i < data.length; i++) {
     var option = data[i].option;
-    console.log(
-      option.toUpperCase() === req.body[data[i].questionNo].toUpperCase()
-    );
     if (
       req.body[data[i].questionNo] &&
       option.toUpperCase() === req.body[data[i].questionNo].toUpperCase()
@@ -55,12 +60,10 @@ app.post("/", (req, res) => {
 
     // Save the workbook to the same file
     workbook.xlsx.writeFile("./result.xlsx");
-    console.log("lol");
   });
 
   // Printing data
-  console.log(score);
-  res.send("Booka le" + score);
+  res.send("Your Score is : " + score);
   // res.redirect("/");
 });
 
