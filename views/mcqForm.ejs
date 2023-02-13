@@ -322,5 +322,10 @@
       </span>
       <button type="submit">Submit</button>
     </form>
+    <script>
+      window.onbeforeunload = function (e) {
+        return "Don't leave";
+      };
+    </script>
   </body>
 </html>
